@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent directory containing Quality Control configuration -->
+    <!-- Usefull to bootstrap the installation of the parent maven project as a resource -->
+    <parent>
+        <groupId>lu.infeurope</groupId>
+        <artifactId>QualityControlReports</artifactId>
+        <version>1.3</version>
+        <relativePath>../../</relativePath>
+    </parent>
+
+    <groupId>lu.infeurope.QualityControlReports</groupId>
+    <artifactId>QualityControlReportsConfiguration</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <name>Library - Common Build Configuration</name>
+    <url>http://www.infeurope.lu/PMO/</url>
+
+</project>

@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>lu.infeurope</groupId>
+	<artifactId>QualityControlReports</artifactId>
+	<version>1.3</version>
+	<packaging>pom</packaging>
+
+	<name>Quality Control Reports</name>
+	<description>Maven project as parent pom to inherit Quality Control Reports</description>
+	<url>http://www.infeurope.lu/PMO/</url>
+
+	<developers>
+		<developer>
+			<id>pcolot</id>
+			<name>Pierre Colot</name>
+			<email>pcolot@infeurope.lu</email>
+			<organization>infeurope S.A.</organization>
+			<organizationUrl>http://www.infeurope.lu</organizationUrl>
+			<roles>
+				<role>developper</role>
+				<role>head of project</role>
+				<role>support for production</role>
+			</roles>
+			<timezone>Europa/Brussels/Luxemburg</timezone>
+		</developer>
+	</developers>
+	
+    <distributionManagement>
+        <repository>
+            <id>Mysite</id>
+            <url>https://mysite.server/server</url>
+        </repository>
+    </distributionManagement>
+    
+	<properties>
+		<findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
+		<jalopy-maven-plugin.version>1.0-alpha-1</jalopy-maven-plugin.version>
+		<javancss-maven-plugin.version>2.1</javancss-maven-plugin.version>
+		<jdepend-maven-plugin.version>2.0</jdepend-maven-plugin.version>
+		<junit.version>4.13.2</junit.version>
+		<log4j.version>2.22.1</log4j.version>
+<!--No backward compatibility, migration required <log4j.version>3.0.0-beta1</log4j.version>-->
+		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
+		<maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
+		<maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
+		<maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
+		<maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
+		<maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
+		<maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
+		<maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
+		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
+		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+		<maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
+		<maven-jxr-plugin.version>3.3.2</maven-jxr-plugin.version>
+		<maven-pmd-plugin.version>3.21.2</maven-pmd-plugin.version>
+		<spotbugs-maven-plugin.version>4.8.2.0</spotbugs-maven-plugin.version>
+		<maven-project-info-reports-plugin.version>3.5.0</maven-project-info-reports-plugin.version> 
+		<maven-release-plugin.version>3.0.1</maven-release-plugin.version>
+		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+		<maven-site-plugin.version>4.0.0-M13</maven-site-plugin.version>
+		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+
+		<taglist-maven-plugin.version>3.0.0</taglist-maven-plugin.version>
+		
+		<tidy-maven-plugin.version>1.2.0</tidy-maven-plugin.version>
+		
+		<tomcat6-maven-plugin.version>2.2</tomcat6-maven-plugin.version>
+		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+
+		<versions-maven-plugin.version>2.16.2</versions-maven-plugin.version>
+		
+		<sonar-maven-plugin.version>3.10.0.2594</sonar-maven-plugin.version>
+		
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+<!-- Old way to manage java versions -->
+		<project.build.sourceVersion>17</project.build.sourceVersion>
+		<project.build.targetVersion>17</project.build.targetVersion>
+
+<!-- Modern way to manage java versions -->
+<!-- 
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target> 
+		<maven.compiler.release>17</maven.compiler.release>
+-->
+	</properties>
+	
+	<!-- The different source modules of which this project is composed of -->
+	<!--   An exclusive alternative is to set a plugin dependency -->
+	<modules>
+		<module>modules/QualityControlReportsConfiguration</module>
+<!--		<module>modules/clientlibrary</module>-->
+	</modules>
+	
+	<pluginRepositories>
+
+        <pluginRepository>
+          <id>central</id>
+          <url>https://repo.maven.apache.org/maven2</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+        </pluginRepository>
+		
+	</pluginRepositories>
+	
+	<repositories>
+		<repository>
+			<id>sonatype-nexus</id>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+<!-- virtual dependencies -->
+<!--
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>-->
+		
+
+		
+<!--	Compatibility bridges
+		Deprecated 1.2.17
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>  
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-1.2-api</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>  -->
+		
+		<!-- <dependency>
+			<groupId>org.apache.maven.doxia</groupId>
+			<artifactId>doxia-site-renderer</artifactId>
+			<version>1.8.1</version>
+		</dependency> -->
+        <!-- In place of using the sub- module <module>modules/QualityControlReportsConfiguration</module> 
+		     the usage of this dependency could be configured. This require an indepedant build of the dependency
+             WITHOUT this dependency to avoid cyclic dependency			 -->
+		<!-- <dependency> -->
+			<!-- <groupId>lu.infeurope.QualityControlReports</groupId> -->
+			<!-- <artifactId>QualityControlReportsConfiguration</artifactId> -->
+			<!-- <version>1.0</version> -->
+			<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+		<!-- end of virtual dependencies -->
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<directory>${basedir}/target</directory>
+		<pluginManagement>
+			<plugins>
+				<!-- Maven 2 Build Plugin Management -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+						<showDeprecation>on</showDeprecation>
+						<source>${project.build.sourceVersion}</source>
+						<target>${project.build.targetVersion}</target>
+					</configuration>					
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven-clean-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven-assembly-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skip>false</skip>
+					</configuration>
+					<version>${maven-surefire-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven-war-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat6-maven-plugin</artifactId>
+					<configuration>
+						<url>http://localhost:8080/manager</url>
+						<server>local-test-server</server>
+						<!-- <warFile>/opt/BEI/WebApplication/sources/target/jaspers.war</warFile> -->
+						<!-- <path>/jaspers</path> -->
+						<path>/${project.build.finalName}</path>
+					</configuration>
+					<version>${tomcat6-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<configuration>
+						<url>http://localhost:8080/manager</url>
+						<server>local-test-server</server>
+						<!-- <warFile>/opt/BEI/WebApplication/sources/target/jaspers.war</warFile> -->
+						<!-- <path>/jaspers</path> -->
+						<path>/${project.build.finalName}</path>
+					</configuration>
+					<version>${tomcat7-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${maven-release-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven-deploy-plugin.version}</version>
+				</plugin>				
+
+				<!-- Maven 3 Reporting Plugin Management -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${maven-site-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>${maven-project-info-reports-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+					<configuration>
+						<source>${project.build.sourceVersion}</source>
+						<failOnError>false</failOnError>
+						<additionalOptions>-package</additionalOptions>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-changes-plugin</artifactId>
+					<version>${maven-changes-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${maven-checkstyle-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${maven-pmd-plugin.version}</version>
+				</plugin>
+<!--				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${findbugs-maven-plugin.version}</version>
+				</plugin>-->
+				<plugin>
+					<groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>${spotbugs-maven-plugin.version}</version>
+				</plugin>
+<!--				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jdepend-maven-plugin</artifactId>
+					<version>${jdepend-maven-plugin.version}</version>
+				</plugin>-->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>javancss-maven-plugin</artifactId>
+					<version>${javancss-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${maven-jxr-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${versions-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>taglist-maven-plugin</artifactId>
+					<version>${taglist-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>tidy-maven-plugin</artifactId>
+					<version>${tidy-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<!-- <groupId>com.lukespragg</groupId> -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jalopy-maven-plugin</artifactId>
+					<version>${jalopy-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${sonar-maven-plugin.version}</version>
+				</plugin>
+				
+			</plugins>
+		</pluginManagement>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tidy-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jalopy-maven-plugin</artifactId>
+				<configuration>
+					<convention>multi/jalopy.xml</convention>
+					<failOnError>false</failOnError>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>lu.infeurope.QualityControlReports</groupId>
+						<artifactId>QualityControlReportsConfiguration</artifactId>
+						<version>${project.version}}</version>
+					</dependency>
+				</dependencies>
+			</plugin>			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+			</plugin>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+<!--                 <configuration> -->
+<!--                     <encoding>${project.build.sourceEncoding}</encoding> -->
+<!--                 </configuration> -->
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+			</plugin>	
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+<!--							<additionalparam>-Xdoclint:none</additionalparam>-->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+			</plugin>			
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.tomcat.maven</groupId> -->
+<!-- 				<artifactId>tomcat6-maven-plugin</artifactId> -->
+<!-- 			</plugin> -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<excludeDefaults>true</excludeDefaults>
+		<outputDirectory>${project.build.directory}/site</outputDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>${maven-project-info-reports-plugin.version}</version>
+				<configuration>
+					<dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+<!--					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>-->
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>ci-management</report>
+							<report>dependencies</report>
+							<report>dependency-convergence</report>
+							<report>dependency-info</report>
+							<report>dependency-management</report>
+							<report>distribution-management</report>							
+							<report>index</report>
+							<report>issue-management</report>
+							<report>licenses</report>
+							<report>mailing-lists</report>
+							<report>modules</report>
+							<report>plugin-management</report>
+							<report>plugins</report>
+							<report>scm</report>
+							<report>summary</report>
+							<report>team</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${maven-pmd-plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>pmd</report>
+							<report>cpd</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+				<configuration>
+<!--					<linkXref>true</linkXref>-->
+<!--					<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>-->
+					<minimumTokens>100</minimumTokens>
+					<targetJdk>${project.build.targetVersion}</targetJdk><!-- previously 1.6 -->
+					<excludes>
+						<exclude>**/*Bean.java</exclude>
+						<exclude>**/*Test*.java</exclude>
+						<exclude>**/generated/*.java</exclude>
+					</excludes>
+					<rulesets>
+						<ruleset>/category/java/bestpractices.xml</ruleset>
+						<ruleset>/category/java/codestyle.xml</ruleset>
+						<ruleset>/category/java/design.xml</ruleset>
+						<ruleset>/category/java/documentation.xml</ruleset>
+						<ruleset>/category/java/errorprone.xml</ruleset>
+						<ruleset>/category/java/multithreading.xml</ruleset>
+						<ruleset>/category/java/performance.xml</ruleset>
+						<ruleset>/category/java/security.xml</ruleset>
+					</rulesets>
+					
+					
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+				<configuration>
+					<!--<linkXref>true</linkXref>-->
+					<!--<configLocation>multi/checkstyle.xml</configLocation>-->
+				</configuration>
+			</plugin>
+<!--			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>${findbugs-maven-plugin.version}</version>
+				<configuration>
+					<!-\-
+						Enables analysis which takes more memory but finds more bugs.
+						If you run out of memory, changes the value of the effort element
+						to 'low'.
+					-\->
+					<effort>low</effort>
+					<!-\- Reports all bugs (other values are medium and max) -\->
+					<threshold>medium</threshold>
+				</configuration>
+			</plugin>-->
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>${spotbugs-maven-plugin.version}</version>
+				<configuration>
+					<!--
+						Enables analysis which takes more memory but finds more bugs.
+						If you run out of memory, changes the value of the effort element
+						to 'low'.
+					-->
+					<effort>Max</effort>
+					<!-- Reports all bugs (other values are medium and max) -->
+					<threshold>Low</threshold>
+				</configuration>
+			  </plugin>
+<!--			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>${jdepend-maven-plugin.version}</version>
+			</plugin>-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>javancss-maven-plugin</artifactId>
+				<version>${javancss-maven-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${maven-jxr-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>${versions-maven-plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependency-updates-report</report>
+							<report>plugin-updates-report</report>
+							<report>property-updates-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<version>${maven-changes-plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>changes-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>analyze-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+<!-- plugin that will generate reports on the tags in the source code (see TODO etc..) -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>${taglist-maven-plugin.version}</version>
+		        <configuration>
+		          <tagListOptions>
+		            <tagClasses>
+		              <tagClass>
+		                <displayName>Todo Work</displayName>
+		                <tags>
+		                  <tag>
+		                    <matchString>todo</matchString>
+		                    <matchType>ignoreCase</matchType>
+		                  </tag>
+		                  <tag>
+		                    <matchString>FIXME</matchString>
+		                    <matchType>exact</matchType>
+		                  </tag>
+		                </tags>
+		              </tagClass>
+		            </tagClasses>
+		          </tagListOptions>
+		        </configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>

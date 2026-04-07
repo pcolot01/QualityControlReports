@@ -7,12 +7,12 @@
 
 	<groupId>lu.infeurope</groupId>
 	<artifactId>QualityControlReports</artifactId>
-	<version>1.3</version>
+	<version>1.5</version>
 	<packaging>pom</packaging>
 
 	<name>Quality Control Reports</name>
 	<description>Maven project as parent pom to inherit Quality Control Reports</description>
-	<url>http://www.infeurope.lu/PMO/</url>
+	<url>https://www.infeurope.lu/PMO/</url>
 
 	<developers>
 		<developer>
@@ -20,7 +20,7 @@
 			<name>Pierre Colot</name>
 			<email>pcolot@infeurope.lu</email>
 			<organization>infeurope S.A.</organization>
-			<organizationUrl>http://www.infeurope.lu</organizationUrl>
+			<organizationUrl>https://www.infeurope.lu</organizationUrl>
 			<roles>
 				<role>developper</role>
 				<role>head of project</role>
@@ -43,60 +43,59 @@
 		<javancss-maven-plugin.version>2.1</javancss-maven-plugin.version>
 		<jdepend-maven-plugin.version>2.0</jdepend-maven-plugin.version>
 		<junit.version>4.13.2</junit.version>
-		<log4j.version>2.22.1</log4j.version>
+		<log4j.version>2.25.4</log4j.version>
 <!--No backward compatibility, migration required <log4j.version>3.0.0-beta1</log4j.version>-->
-		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
-		<maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
-		<maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
-		<maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
-		<maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
-		<maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
-		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
-		<maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
+		<maven-antrun-plugin.version>3.2.0</maven-antrun-plugin.version>
+		<maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
+		<maven-changes-plugin.version>3.0.0-M3</maven-changes-plugin.version>
+		<maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
+		<maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
+		<maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
+		<maven-dependency-plugin.version>3.10.0</maven-dependency-plugin.version>
+		<maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
 		<maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
-		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
-		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-		<maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
-		<maven-jxr-plugin.version>3.3.2</maven-jxr-plugin.version>
-		<maven-pmd-plugin.version>3.21.2</maven-pmd-plugin.version>
-		<spotbugs-maven-plugin.version>4.8.2.0</spotbugs-maven-plugin.version>
-		<maven-project-info-reports-plugin.version>3.5.0</maven-project-info-reports-plugin.version> 
-		<maven-release-plugin.version>3.0.1</maven-release-plugin.version>
-		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-		<maven-site-plugin.version>4.0.0-M13</maven-site-plugin.version>
-		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
-		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+		<maven-install-plugin.version>3.1.4</maven-install-plugin.version>
+		<maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
+		<maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
+		<maven-jxr-plugin.version>3.6.0</maven-jxr-plugin.version>
+		<maven-pmd-plugin.version>3.28.0</maven-pmd-plugin.version>
+		<spotbugs-maven-plugin.version>4.9.8.3</spotbugs-maven-plugin.version>
+		<maven-project-info-reports-plugin.version>3.9.0</maven-project-info-reports-plugin.version>
+		<maven-release-plugin.version>3.3.1</maven-release-plugin.version>
+		<maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
+		<maven-site-plugin.version>4.0.0-M16</maven-site-plugin.version>
+		<maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
+		<maven-war-plugin.version>3.5.1</maven-war-plugin.version>
 
-		<taglist-maven-plugin.version>3.0.0</taglist-maven-plugin.version>
+		<taglist-maven-plugin.version>3.2.2</taglist-maven-plugin.version>
 		
-		<tidy-maven-plugin.version>1.2.0</tidy-maven-plugin.version>
+		<tidy-maven-plugin.version>1.4.0</tidy-maven-plugin.version>
 		
 		<tomcat6-maven-plugin.version>2.2</tomcat6-maven-plugin.version>
 		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
 
-		<versions-maven-plugin.version>2.16.2</versions-maven-plugin.version>
+		<versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
 		
-		<sonar-maven-plugin.version>3.10.0.2594</sonar-maven-plugin.version>
+		<sonar-maven-plugin.version>5.5.0.6356</sonar-maven-plugin.version>
 		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 <!-- Old way to manage java versions -->
-		<project.build.sourceVersion>17</project.build.sourceVersion>
-		<project.build.targetVersion>17</project.build.targetVersion>
+		<project.build.sourceVersion>1.8</project.build.sourceVersion>
+		<project.build.targetVersion>1.8</project.build.targetVersion>
 
 <!-- Modern way to manage java versions -->
-<!-- 
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target> 
-		<maven.compiler.release>17</maven.compiler.release>
--->
+<!--		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target> 
+		<maven.compiler.release>1.8</maven.compiler.release>-->
+
 	</properties>
 	
 	<!-- The different source modules of which this project is composed of -->
 	<!--   An exclusive alternative is to set a plugin dependency -->
 	<modules>
-		<module>modules/QualityControlReportsConfiguration</module>
-<!--		<module>modules/clientlibrary</module>-->
+		<!--<module>modules/QualityControlReportsConfiguration</module>-->
+		<!--<module>modules/clientlibrary</module>-->
 	</modules>
 	
 	<pluginRepositories>
@@ -174,8 +173,8 @@
 			<artifactId>doxia-site-renderer</artifactId>
 			<version>1.8.1</version>
 		</dependency> -->
-        <!-- In place of using the sub- module <module>modules/QualityControlReportsConfiguration</module> 
-		     the usage of this dependency could be configured. This require an indepedant build of the dependency
+        <!-- In place of using the submodule <module>modules/QualityControlReportsConfiguration</module>
+		     the usage of this dependency could be configured. This requires an independent build of the dependency
              WITHOUT this dependency to avoid cyclic dependency			 -->
 		<!-- <dependency> -->
 			<!-- <groupId>lu.infeurope.QualityControlReports</groupId> -->
@@ -208,7 +207,7 @@
 					<version>${maven-compiler-plugin.version}</version>
 					<configuration>
 						<encoding>${project.build.sourceEncoding}</encoding>
-						<showDeprecation>on</showDeprecation>
+						<showDeprecation>true</showDeprecation>
 						<source>${project.build.sourceVersion}</source>
 						<target>${project.build.targetVersion}</target>
 					</configuration>					
@@ -332,16 +331,18 @@
 					<artifactId>spotbugs-maven-plugin</artifactId>
 					<version>${spotbugs-maven-plugin.version}</version>
 				</plugin>
-<!--				<plugin>
+<!--
+				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>jdepend-maven-plugin</artifactId>
 					<version>${jdepend-maven-plugin.version}</version>
 				</plugin>-->
+<!-- Not maintained and not supporting modern lambda function but underlying lib has been updated
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>javancss-maven-plugin</artifactId>
 					<version>${javancss-maven-plugin.version}</version>
-				</plugin>
+				</plugin> -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jxr-plugin</artifactId>
@@ -393,7 +394,7 @@
 					<dependency>
 						<groupId>lu.infeurope.QualityControlReports</groupId>
 						<artifactId>QualityControlReportsConfiguration</artifactId>
-						<version>${project.version}}</version>
+						<version>${project.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>			
@@ -434,7 +435,7 @@
 							<goal>jar</goal>
 						</goals>
 						<configuration>
-<!--							<additionalparam>-Xdoclint:none</additionalparam>-->
+							<!--noinspection SpellCheckingInspection <additionalparam>-Xdoclint:none</additionalparam>-->
 						</configuration>
 					</execution>
 				</executions>
@@ -574,11 +575,12 @@
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>${jdepend-maven-plugin.version}</version>
 			</plugin>-->
+<!-- Not maintained and not supporting modern lambda function but underlying lib has been updated
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>javancss-maven-plugin</artifactId>
 				<version>${javancss-maven-plugin.version}</version>
-			</plugin>
+			</plugin>-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>

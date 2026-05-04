@@ -36,6 +36,11 @@
             <url>https://mysite.server/server</url>
         </repository>
     </distributionManagement>
+
+	<issueManagement>
+		<system>JIRA</system>
+		<url>http://jira.mysite.server/</url>
+	</issueManagement>
     
 	<properties>
 		<findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
@@ -250,18 +255,18 @@
 					<artifactId>maven-war-plugin</artifactId>
 					<version>${maven-war-plugin.version}</version>
 				</plugin>
-				<plugin>
+				<!-- <plugin>
 					<groupId>org.apache.tomcat.maven</groupId>
 					<artifactId>tomcat6-maven-plugin</artifactId>
 					<configuration>
 						<url>http://localhost:8080/manager</url>
 						<server>local-test-server</server>
-						<!-- <warFile>/opt/BEI/WebApplication/sources/target/jaspers.war</warFile> -->
-						<!-- <path>/jaspers</path> -->
+						<! - - <warFile>/opt/BEI/WebApplication/sources/target/jaspers.war</warFile> - ->
+						<! - - <path>/jaspers</path> - ->
 						<path>/${project.build.finalName}</path>
 					</configuration>
 					<version>${tomcat6-maven-plugin.version}</version>
-				</plugin>
+				</plugin> -->
 				<plugin>
 					<groupId>org.apache.tomcat.maven</groupId>
 					<artifactId>tomcat7-maven-plugin</artifactId>
@@ -321,11 +326,6 @@
 					<artifactId>maven-pmd-plugin</artifactId>
 					<version>${maven-pmd-plugin.version}</version>
 				</plugin>
-<!--				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>findbugs-maven-plugin</artifactId>
-					<version>${findbugs-maven-plugin.version}</version>
-				</plugin>-->
 				<plugin>
 					<groupId>com.github.spotbugs</groupId>
 					<artifactId>spotbugs-maven-plugin</artifactId>
@@ -443,11 +443,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-			</plugin>			
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.tomcat.maven</groupId> -->
-<!-- 				<artifactId>tomcat6-maven-plugin</artifactId> -->
-<!-- 			</plugin> -->
+			</plugin>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
@@ -527,8 +523,6 @@
 						<ruleset>/category/java/performance.xml</ruleset>
 						<ruleset>/category/java/security.xml</ruleset>
 					</rulesets>
-					
-					
 				</configuration>
 			</plugin>
 			<plugin>
@@ -540,21 +534,6 @@
 					<!--<configLocation>multi/checkstyle.xml</configLocation>-->
 				</configuration>
 			</plugin>
-<!--			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>${findbugs-maven-plugin.version}</version>
-				<configuration>
-					<!-\-
-						Enables analysis which takes more memory but finds more bugs.
-						If you run out of memory, changes the value of the effort element
-						to 'low'.
-					-\->
-					<effort>low</effort>
-					<!-\- Reports all bugs (other values are medium and max) -\->
-					<threshold>medium</threshold>
-				</configuration>
-			</plugin>-->
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
@@ -607,7 +586,7 @@
 				<reportSets>
 					<reportSet>
 						<reports>
-							<report>changes-report</report>
+							<report>changes</report>
 						</reports>
 					</reportSet>
 				</reportSets>

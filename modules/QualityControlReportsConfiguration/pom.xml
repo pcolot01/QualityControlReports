@@ -8,14 +8,274 @@
     <parent>
         <groupId>lu.infeurope</groupId>
         <artifactId>QualityControlReports</artifactId>
-        <version>1.5</version>
+        <version>1.6</version>
     </parent>
 
     <groupId>lu.infeurope.QualityControlReports</groupId>
     <artifactId>QualityControlReportsConfiguration</artifactId>
     <packaging>jar</packaging>
 
-    <name>Library - Common Build Configuration</name>
+    <name>Library - Common Build Mock Configuration</name>
+    <description>Template for project using QualityControlReports</description>
     <url>https://www.infeurope.lu/PMO/</url>
+
+    <distributionManagement>
+        <repository>
+            <id>QualityControlReportsConfiguration</id>
+            <url>https://mysite.server/QualityControlReportsConfiguration/</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <junit.version>4.13.2</junit.version>
+        <log4j.version>2.25.4</log4j.version><!-- No backward compatibility, migration required <log4j.version>3.0.0-beta1</log4j.version>  -->
+        <maven-antrun-plugin.version>3.2.0</maven-antrun-plugin.version>
+        <maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
+        <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
+        <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
+        <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
+        <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
+        <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
+        <maven-release-plugin.version>3.3.1</maven-release-plugin.version>
+        <maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
+        <maven-war-plugin.version>3.5.1</maven-war-plugin.version>
+        <tomcat6-maven-plugin.version>2.2</tomcat6-maven-plugin.version>
+        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Very Old way to manage java versions -->
+        <!-- 	<project.build.sourceVersion>1.8</project.build.sourceVersion>
+                <project.build.targetVersion>1.8</project.build.targetVersion> -->
+
+        <!-- Old way to manage java versions -->
+        <!--    <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target> -->
+
+        <!-- Modern way to manage java versions -->
+        <maven.compiler.release>1.8</maven.compiler.release>
+    </properties>
+
+    <!-- The different source modules of which this project is composed of -->
+    <!--   An exclusive alternative is to set a plugin dependency -->
+    <!-- <modules>
+        <module>modules/QualityControlReportsConfiguration</module>
+    </modules> -->
+
+    <!--<repositories>
+        <repository>
+            <id>id-boundless</id>
+            <name>Boundless</name>
+            <url>https://repo.boundlessgeo.com/main/</url>
+        </repository>
+    </repositories>-->
+
+<!--    <pluginRepositories>-->
+
+<!--        <pluginRepository>-->
+<!--            <id>central</id>-->
+<!--            <url>https://repo.maven.apache.org/maven2</url>-->
+<!--            <releases>-->
+<!--                <enabled>true</enabled>-->
+<!--            </releases>-->
+<!--        </pluginRepository>-->
+
+<!--    </pluginRepositories>-->
+
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>sonatype-nexus</id>-->
+<!--			<url>https://oss.sonatype.org/content/groups/public</url>-->
+<!--		</repository>-->
+<!--	</repositories> -->
+
+<!--    <dependencies>-->
+<!--        &lt;!&ndash; virtual dependencies &ndash;&gt;-->
+<!--        -->
+<!--        <dependency>-->
+<!--            <groupId>junit</groupId>-->
+<!--            <artifactId>junit</artifactId>-->
+<!--            <version>${junit.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-api</artifactId>-->
+<!--            <version>${log4j.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-core</artifactId>-->
+<!--            <version>${log4j.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>&ndash;&gt;-->
+
+<!--<!- -	Compatibility bridges-->
+<!--        Deprecated 1.2.17 - ->-->
+<!--        <dependency>-->
+<!--            <groupId>log4j</groupId>-->
+<!--            <artifactId>log4j</artifactId>-->
+<!--            <version>${log4j.version}</version>-->
+<!--        </dependency>  -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-1.2-api</artifactId>-->
+<!--            <version>${log4j.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-jcl</artifactId>-->
+<!--            <version>${log4j.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-slf4j-impl</artifactId>-->
+<!--            <version>${log4j.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>  - ->-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.maven.doxia</groupId>-->
+<!--            <artifactId>doxia-site-renderer</artifactId>-->
+<!--            <version>1.8.1</version>-->
+<!--        </dependency> -->
+<!--        -->
+<!--        <!- - end of virtual dependencies 		 - ->-->
+<!--    </dependencies>-->
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <directory>${basedir}/target</directory>
+        <pluginManagement>
+            <plugins>
+
+                <!-- Maven 2 Build Plugin Management -->
+                <!-- 				<plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-resources-plugin</artifactId>
+                                    <version>${maven-resources-plugin.version}</version>
+                                    <configuration>
+                                        <propertiesEncoding>${project.build.sourceEncoding}</propertiesEncoding>
+                                    </configuration>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-compiler-plugin</artifactId>
+                                    <version>${maven-compiler-plugin.version}</version>
+                                    <configuration>
+                                        <release>${maven.compiler.release}</release>
+                <!-  - 						<encoding>${project.build.sourceEncoding}</encoding>
+                                        <showDeprecation>true</showDeprecation>
+                                        <source>${project.build.sourceVersion}</source>
+                                        <target>${project.build.targetVersion}</target> - ->
+                                    </configuration>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-clean-plugin</artifactId>
+                                    <version>${maven-clean-plugin.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-assembly-plugin</artifactId>
+                                    <version>${maven-assembly-plugin.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-install-plugin</artifactId>
+                                    <version>${maven-install-plugin.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-antrun-plugin</artifactId>
+                                    <version>${maven-antrun-plugin.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-jar-plugin</artifactId>
+                                    <version>${maven-jar-plugin.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-war-plugin</artifactId>
+                                    <version>${maven-war-plugin.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.tomcat.maven</groupId>
+                                    <artifactId>tomcat6-maven-plugin</artifactId>
+                                    <configuration>
+                                        <url>http://localhost:8080/manager</url>
+                                        <server>local-test-server</server>
+                                        <!- - <warFile>/opt/BEI/WebApplication/sources/target/jaspers.war</warFile> - ->
+                                        <!- - <path>/jaspers</path> - ->
+                                        <path>/${project.build.finalName}</path>
+                                    </configuration>
+                                    <version>${tomcat6-maven-plugin.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.tomcat.maven</groupId>
+                                    <artifactId>tomcat7-maven-plugin</artifactId>
+                                    <configuration>
+                                        <url>http://localhost:8080/manager</url>
+                                        <server>local-test-server</server>
+                                        <!- - <warFile>/opt/BEI/WebApplication/sources/target/jaspers.war</warFile> - ->
+                                        <!- - <path>/jaspers</path> - ->
+                                        <path>/${project.build.finalName}</path>
+                                    </configuration>
+                                    <version>${tomcat7-maven-plugin.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-release-plugin</artifactId>
+                                    <version>${maven-release-plugin.version}</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.apache.maven.plugins</groupId>
+                                    <artifactId>maven-deploy-plugin</artifactId>
+                                    <version>${maven-deploy-plugin.version}</version>
+                                </plugin>	 -->
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!-- 			<plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-clean-plugin</artifactId>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-resources-plugin</artifactId>
+            <!- -                 <configuration> - >
+            <!- -                     <encoding>${project.build.sourceEncoding}</encoding> - ->
+            <!- -                 </configuration> - ->
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-install-plugin</artifactId>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-deploy-plugin</artifactId>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>org.apache.tomcat.maven</groupId>
+                            <artifactId>tomcat7-maven-plugin</artifactId>
+                        </plugin>
+                        -->
+
+        </plugins>
+    </build>
 
 </project>
